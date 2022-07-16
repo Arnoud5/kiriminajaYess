@@ -21,7 +21,9 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~Assets/CSS/main.css'
+    '~Assets/CSS/main.css',
+    // 'owlcarousel/owl.carousel.min.css',
+    // 'owlcarousel/owl.theme.default.min.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
