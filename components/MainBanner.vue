@@ -1,139 +1,109 @@
 <template>
-  <div class="container pt-24">
-    <!-- slider Banner -->
-
-      <div class="slider">
-        <div class="slides">
-          <input type="radio" name="radio-btn" id="radio1" >
-          <input type="radio" name="radio-btn" id="radio2" >
-          <input type="radio" name="radio-btn" id="radio3" >
-          <input type="radio" name="radio-btn" id="radio4" >
-          <!-- images -->
-          <div class="slide first">
-            <img class="max-w-none w-80" src="https://kiriminaja.com/storage/Slider/July22/1657266673_slider%20(3).png" alt="">
-            <p>title</p>
-            <p>paragraph alot of it</p>
+  <div class="pt-24 md:pt-0">
+    <div class="banner-slider">
+      <client-only>
+        <carousel
+          :loop="true"
+          :nav="false"
+          :dots="true"
+          :items="1"
+          :center="true"
+          :stagePadding="10"
+          :margin="50"
+        >
+          <div class="banner-image" v-for="data in datas" :key="data.id">
+            <div
+              class="banner-placeholder md:flex md:items-center md:justify-center md:my-auto md:h-screen"
+            >
+              <img class="md:w-1/2" :src="data.image" >
+              <div class="md:w-1/3">
+                <h2>{{ data.title }}</h2>
+                <p>
+                  {{ data.description }}
+                </p>
+                <ul v-for="list in data.poin" :key="list">
+                  <li>{{ list }}</li>
+                </ul>
+                <a class="banner-link" :href="data.link"> Daftar Disini </a>
+              </div>
+            </div>
           </div>
-          <div class="slide">
-            <img class="max-w-none w-80" src="https://kiriminaja.com/storage/Slider/July22/1657266673_slider%20(3).png" alt="">
-            <p>title</p>
-            <p>paragraph alot of it</p>
-          </div>
-          <div class="slide">
-            <img class="max-w-none w-80" src="https://kiriminaja.com/storage/Slider/July22/1657266673_slider%20(3).png" alt="">
-            <p>title</p>
-            <p>paragraph alot of it</p>
-          </div>
-          <div class="slide">
-            <img class="max-w-none w-80" src="https://kiriminaja.com/storage/Slider/July22/1657266673_slider%20(3).png" alt="">
-            <p>title</p>
-            <p>paragraph alot of it</p>
-          </div>
-          <!-- images -->
-        </div>
-        <!-- navigation manual -->
-        <div class="navigation-manual">
-            <label for="radio1" class="manual-btn"></label>
-            <label for="radio2" class="manual-btn"></label>
-            <label for="radio3" class="manual-btn"></label>
-            <label for="radio4" class="manual-btn"></label>
-        </div>
-        <!-- navigation manual -->
-      </div>  
+        </carousel>
+      </client-only>
+    </div>
   </div>
 </template>
 
-<script>
-  
+<script setups>
+import carousel from "vue-owl-carousel";
+
+export default {
+  components: { carousel },
+  data: () => ({
+    datas: [],
+  }),
+  async fetch() {
+    this.datas = await fetch("/Api/main.json").then((res) => res.json());
+  },
+};
 </script>
 
-
 <style lang="scss">
-  /* *{
-    background-color:rgba($color: #b8ffd6, $alpha: .1);
-    border: 1px solid rgba($color: #000000, $alpha: .1);
-  } */
+.banner-slider {
+  .banner-image img {
+    height: 50vh;
+    width: auto;
+    text-align: center;
 
-  $width : 95vw;
-  $width2 : 90vw;
-  
-  .container{
-    width: $width;
-    margin: 0 auto;
-
-    .slider{
-    width:100%;
-    height: 80vh;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 2px 2px 10px rgba($color: #000000, $alpha: .1);
-    border-radius: 15px;
-    overflow: hidden;
-    
-      .slides{
-        width: 500%;
-        height: 80vh;
-        display: flex;
-
-        input {
-          display: none;
-        }
-        #radio1:checked ~ .first {
-          margin-left: 0;
-        }
-
-        #radio2:checked ~ .first {
-          margin-left: -20%;
-        }
-
-        #radio3:checked ~ .first {
-            margin-left: -40%;
-        }
-
-        #radio4:checked ~ .first {
-            margin-left: -60%;
-        }
-      }
-      /* manual navigation */
-      .navigation-manual{
-        position: absolute;
-        width: $width;
-        margin-top: -40px;
-        display: flex;
-        justify-content: center;
-
-        .manual-btn{
-          width: 20px;
-          border: 2px solid #0e92ff ;
-          padding: 10px;
-          border-radius: 10px;
-          cursor: pointer;
-          transition: 1s;
-          margin: 0 20px;
-        }
-
-        .manual-btn:hover{
-          background: #0e92ff;
-        }
-      }
-      
+    .banner-placeholder {
+      height: auto;
     }
-
-    .slide{
-      width: $width;
-      transition: 2s;
-      display:flex;
-      flex-direction:column;
-      align-items: center;
-    }
-
-    /* manual navigation button */
-    .navigation-manual{
-      position: absolute;
-      margin-top: -40px;
-      cursor:pointer;
-      transition: 1s;
-      padding: 0 20px;
-    }
-
   }
+}
+
+h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+  text-align: left;
+}
+.banner-link {
+  text-align: center;
+  padding: 5px 0;
+  width: 100%;
+  display: block;
+  background-color: rgb(166, 38, 216);
+  border-radius: 20px;
+  color: white;
+  font-weight: 900;
+}
+p {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
+  color: rgb(0, 0, 0);
+  margin: 10px 0;
+}
+.banner-slider {
+  height: 600px;
+}
+
+ul > li {
+  margin: 10px 20px;
+}
+
+li::before {
+  content: "";
+  background: url("../static/check.png") no-repeat center;
+  background-size: 15px;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-color: rgb(245, 205, 94);
+  padding: 4px;
+  border-radius: 20px;
+  position: relative;
+  left: -10px;
+  bottom: -5px;
+}
 </style>

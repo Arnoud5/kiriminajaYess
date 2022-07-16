@@ -1,5 +1,5 @@
 <template>
-  <nav class="fixed bg-gray-50 bottom-0 right-0 rounded-full m-3 shadow-2xl">
+  <nav class="fixed bg-gray-50 bottom-0 right-0 rounded-full m-3 shadow-2xl z-50">
     <div class="p-4 flex flex-col-reverse items-center">
       <img @click="openNav" class="w-8 h-8" src="/menu.png" alt="" />
 
@@ -24,3 +24,10 @@ function openNav() {
   console.log("navbr click");
 }
 </script>
+
+<style setup>
+.nav{
+  background-color: white;
+  color: white;
+}
+</style>
