@@ -38,6 +38,7 @@ export default {
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
     '@nuxtjs/style-resources',
+    'vue-ssr-carousel/nuxt',
   ],
 
   styleResources: {

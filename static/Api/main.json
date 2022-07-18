@@ -10,5 +10,30 @@
             "Pelayanan terbaik",
             "Banyak hadiahnya"
         ]
+    },
+    {
+        "id": 2,
+        "image": "https://kiriminaja.com/storage/Slider/July22/1656735529_Slider (2) (1).png",
+        "title": "Gebyar Pesta pora Kirimin Ajas",
+        "description": "Cara cerdas KIRIM PAKET pakai KiriminAja banyak diskon dan dapatkan peluang bawa pulang hadiahnya. Yuk buruan daftar dan kirim paketmu sekarang!",
+        "link": "https://kiriminaja.com/pesta-pora-kiriminaja-segera-dimulai",
+        "poin":[
+            "Tanpa biaya tambahan",
+            "Pelayanan terbaik",
+            "Banyak hadiahnya"
+        ]
+
+    },
+    {
+        "id": 3,
+        "image": "https://kiriminaja.com/storage/Slider/July22/1657266673_slider (3).png",
+        "title": "Pengumuman Pemenang #JuniMendadakHappy Lucky Draw",
+        "description": "Cara cerdas KIRIM PAKET pakai KiriminAja banyak diskon dan dapatkan peluang bawa pulang hadiahnya. Yuk buruan daftar dan kirim paketmu sekarang!",
+        "link": "https://kiriminaja.com/pesta-pora-kiriminaja-segera-dimulai",
+        "poin":[
+            "Tanpa biaya tambahan",
+            "Pelayanan terbaik",
+            "Banyak hadiahnya"
+        ]
     }
 ]

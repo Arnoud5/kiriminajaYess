@@ -15,6 +15,7 @@
     "vue": "^2.6.14",
     "vue-owl-carousel": "^2.0.3",
     "vue-server-renderer": "^2.6.14",
+    "vue-ssr-carousel": "^1.4.0",
     "vue-template-compiler": "^2.6.14",
     "vue-tiny-slider": "^0.1.39",
     "webpack": "^4.46.0"

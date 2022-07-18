@@ -13,7 +13,7 @@ export const getters = {
 // actions
 // asynhronus when the data retrieved, mutation will mutate the state
 export const actions = {
-  async getData() {
+  async getData(state, commit) {
     // hit API to get users
     const datas = await fetch("/Api/main.json")
       .then((res) => {

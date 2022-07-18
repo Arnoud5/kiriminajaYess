@@ -12,25 +12,26 @@
           :stagePadding="10"
           :margin="50"
         >
-        <div class="banner-image" 
-          v-for="data in datas" :key="data.id">
-                    <div class="banner-placeholder md:flex md:items-center md:justify-center md:my-auto md:h-screen">
-                        <img class="md:w-1/2" :src="data.image" />
-                        <div class="md:w-1/3">
-                            
-                            <h2> {{ data.title }} </h2>
-                            <p>
-                                {{ data.description }}
-                            </p>
-                            <ul v-for="list in data.poin" :key="list">
-                                <li>{{ list }}</li>
-                            </ul>
-                            <a class="banner-link" :href="data.link"> Daftar Disini </a>
-                        </div>
-                    </div>
-                </div>
-          
-          
+          <!-- <SsrCarousel> -->
+
+          <div class="banner-image slide" v-for="data in datas" :key="data.id">
+            <div
+              class="banner-placeholder md:flex md:items-center md:justify-center md:my-auto md:h-screen"
+            >
+              <img class="md:w-1/2" :src="data.image" />
+              <div class="md:w-1/3">
+                <h2>{{ data.title }}</h2>
+                <p>
+                  {{ data.description }}
+                </p>
+                <ul v-for="list in data.poin" :key="list">
+                  <li>{{ list }}</li>
+                </ul>
+                <a class="banner-link" :href="data.link"> Daftar Disini </a>
+              </div>
+            </div>
+          </div>
+          <!-- </SsrCarousel> -->
         </carousel>
       </client-only>
     </div>
@@ -38,22 +39,28 @@
 </template>
 
 <script setups>
-import carousel from "vue-owl-carousel";
+// import carousel from "vue-owl-carousel";
+
+import SsrCarousel from "vue-ssr-carousel";
+import ssrCarouselCss from "vue-ssr-carousel/index.css";
 
 export default {
-  components: { carousel },
-  data: () =>({
-      datas : []
+  components: {
+    carousel:
+      typeof window !== "undefined" ? () => import("vue-owl-carousel") : "",
+  },
+  data: () => ({
+    datas: [],
   }),
   async fetch() {
-      this.datas = await fetch('/Api/main.json').then(res => res.json())
+    this.datas = await fetch("/Api/main.json").then((res) => res.json());
   },
 };
-
 </script>
 
 <style lang="scss">
 .banner-slider {
+  height: 100vh;
   .banner-image img {
     height: 50vh;
     width: auto;
@@ -98,7 +105,7 @@ ul > li {
 
 li::before {
   content: "";
-  background: url('../static/check.png') no-repeat center;
+  background: url("../static/check.png") no-repeat center;
   background-size: 15px;
   width: 20px;
   height: 20px;
@@ -109,8 +116,5 @@ li::before {
   position: relative;
   left: -10px;
   bottom: -5px;
-
 }
 </style>
-
-
